@@ -27,6 +27,9 @@ app.use((req,res,next)=>{
     next()
 })
 // app.use(cors(corsOptions));
+app.get('/', (req, res) => {
+    return res.send('Api Server ON ')
+  })
 
 app.use(routesSnack)
 
