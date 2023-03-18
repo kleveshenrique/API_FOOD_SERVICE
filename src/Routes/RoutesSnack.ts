@@ -1,11 +1,13 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import SnackController from "../Controllers/SnackController";
+import { SchemaValidation } from "../Middleware/validateSnack";
 import SnackSchema from "../Models/SnackSchema";
+import { schemaSnack } from "../Schemas/register-sckema";
 
 
 const routesSnack = Router()
 
-routesSnack.post("/snack",async (req,res)=>{
+routesSnack.post("/snack",schemaSnack,SchemaValidation,async (req:Request,res:Response)=>{
     const {snack,name,description,price,image} = req.body;
 
     const Snack = await SnackController.create({snack,name,description,price,image})
@@ -28,11 +30,18 @@ routesSnack.get("/snacks/:snackName",async (req,res)=>{
 
 routesSnack.delete("/snack/:id", async (req,res)=>{
     let id = req.params.id
-    const snackDelected = await SnackController.deleteSnackById(id)
-    return res.json(snackDelected)
+    try {
+        const snackDelected:any = await SnackController.deleteSnackById(id)
+        // console.log(snackDelected)
+        return res.json(snackDelected)
+    } catch (error) {
+        return res.json({"messages":"Erro ao deletar o snack"})
+    }
+    
+   
 })
 
-routesSnack.put("/snack",async (req,res)=>{
+routesSnack.put("/snack",schemaSnack,SchemaValidation,async (req:Request,res:Response)=>{
     const snack = req.body
     const snackUpdated = await SnackController.updateSnack(snack)
 

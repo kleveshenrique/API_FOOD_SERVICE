@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express"
 import mongoose from 'mongoose';
 import routesSnack from "./Routes/RoutesSnack";
@@ -13,6 +14,20 @@ mongoose.connect("mongodb+srv://kleves:Lu294470@cluster0.9rchtf8.mongodb.net/tes
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// var corsOptions = {
+//   origin: 'http://localhost:3000',
+//   optionsSuccessStatus: 200
+// }
+
+app.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","http://localhost:3000")
+    res.header("Access-Control-Allow-Methods",'GET,PUT,POST,DELETE')
+    app.use(cors())
+    next()
+})
+// app.use(cors(corsOptions));
+
 app.use(routesSnack)
 
 app.listen(port, () => {

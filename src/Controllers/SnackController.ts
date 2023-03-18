@@ -8,7 +8,8 @@ interface SnackPropsWithId {
     name : String,
     description: String,
     price: Number,
-    image: String
+    image: String,
+    createdAt:Date
 }
 
 
@@ -54,9 +55,12 @@ class SnackController {
     async updateSnack(snack:SnackPropsWithId) {
               
         try {
-            const Snack = await SnackSchema.findByIdAndUpdate(snack._id,snack,{new:true})
+            const snackUpdated = await SnackSchema.findByIdAndUpdate(snack._id,snack,{new:true})
             
-            return Snack;
+            if (snackUpdated==null) {
+                return {error:"Snack não encontrado"}
+            }
+            return {"message":"Snack atualizado com sucesso"}
 
         } catch (error) {
 
@@ -68,12 +72,11 @@ class SnackController {
     async deleteSnackById(id:String){
         try {            
             const idDelected = await SnackSchema.findByIdAndRemove(id)
-            console.log(idDelected)
-
+          
             if (idDelected==null) {
                 return {error:"Snack não encontrado"}
             }
-            return true
+            return {"message":"Snack excluído com sucesso"}
         } catch (error) {
             return error
         }

@@ -1,7 +1,7 @@
 export interface SnackProps{
-    snack : String,
-    name : String,
-    description: String,
-    price: Number,
-    image: String
+    snack : string,
+    name : string,
+    description: string,
+    price: number,
+    image: string
 }
