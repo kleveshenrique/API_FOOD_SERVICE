@@ -23,6 +23,14 @@ routesSnack.get("/snacks",async (req,res)=>{
 })
 
 routesSnack.get("/snacks/:snackName",async (req,res)=>{
+
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" );
+
+
     const snackName = req.params.snackName
     const snacks = await SnackController.getSnacksBySnackName(snackName)
     return res.json(snacks)
