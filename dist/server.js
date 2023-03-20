@@ -21,7 +21,7 @@ app.use(express_1.default.json());
 //   optionsSuccessStatus: 200
 // }
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "https://food-comerce.netlify.app");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
     app.use((0, cors_1.default)());
     next();
