@@ -20,10 +20,15 @@ app.use(express_1.default.json());
 //   origin: 'http://localhost:3000',
 //   optionsSuccessStatus: 200
 // }
+const corsOptions = {
+    origin: 'https://food-comerce.netlify.app',
+    credentials: true,
+    optionSuccessStatus: 200
+};
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "https://food-comerce.netlify.app");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    app.use((0, cors_1.default)());
+    app.use((0, cors_1.default)(corsOptions));
     next();
 });
 // app.use(cors(corsOptions));
