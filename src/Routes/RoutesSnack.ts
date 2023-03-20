@@ -24,7 +24,7 @@ routesSnack.get("/snacks",async (req,res)=>{
 
 routesSnack.get("/snacks/:snackName",async (req,res)=>{
 
-    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Origin", "http://food-comerce.netlify.app")
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Max-Age", "1800");
     res.setHeader("Access-Control-Allow-Headers", "content-type");

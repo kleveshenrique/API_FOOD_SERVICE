@@ -27,7 +27,7 @@ routesSnack.get("/snacks", (req, res) => __awaiter(void 0, void 0, void 0, funct
     return res.json(snacks);
 }));
 routesSnack.get("/snacks/:snackName", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "http://food-comerce.netlify.app");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Max-Age", "1800");
     res.setHeader("Access-Control-Allow-Headers", "content-type");
