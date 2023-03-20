@@ -22,19 +22,26 @@ app.use(express_1.default.json());
 // }
 const corsOptions = {
     origin: 'https://food-comerce.netlify.app',
-    credentials: true,
     optionSuccessStatus: 200
 };
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://food-comerce.netlify.app");
+    res.setHeader('Access-Control-Allow-Origin', 'https://food-comerce.netlify.app');
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     app.use((0, cors_1.default)(corsOptions));
-    next();
+    return next();
 });
+// app.use((req,res,next)=>{ 
+//     res.header("Access-Control-Allow-Origin","https://food-comerce.netlify.app")
+//     res.header("Access-Control-Allow-Methods",'GET,PUT,POST,DELETE')
+//     app.use(cors(corsOptions))
+//     next()
+// })
 // app.use(cors(corsOptions));
-app.get('/', (req, res) => {
-    return res.send('Api Server ON ');
-});
+// app.get('/', (req, res) => {
+//     return res.send('Api Server ON ')
+// })
 app.use(RoutesSnack_1.default);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
