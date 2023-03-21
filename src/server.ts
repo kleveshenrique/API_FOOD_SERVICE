@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 const corsOptions = {
-  origin:'https://food-comerce.netlify.app/', 
+  origin:'*', 
   credentials:true,
   optionSuccessStatus: 200
 }

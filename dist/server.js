@@ -17,7 +17,7 @@ mongoose_1.default.connect("mongodb+srv://kleves:Lu294470@cluster0.9rchtf8.mongo
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 const corsOptions = {
-    origin: 'https://food-comerce.netlify.app/',
+    origin: '*',
     credentials: true,
     optionSuccessStatus: 200
 };
