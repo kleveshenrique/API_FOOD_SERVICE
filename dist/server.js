@@ -17,17 +17,18 @@ mongoose_1.default.connect("mongodb+srv://kleves:Lu294470@cluster0.9rchtf8.mongo
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 const corsOptions = {
-    origin: 'http://food-comerce.netlify.app',
+    origin: 'https://food-comerce.netlify.app/',
     credentials: true,
     optionSuccessStatus: 200
 };
 app.use((0, cors_1.default)(corsOptions));
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://food-comerce.netlify.app');
-    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    res.header("");
-    next();
-});
+// app.use((req, res, next) => {  
+//   res.header('Access-Control-Allow-Origin','https://food-comerce.netlify.app/')
+//   res.header("Access-Control-Allow-Methods",'GET,PUT,POST,DELETE') 
+//   res.header("") 
+//   cors()
+//   next()
+// });
 // app.use((req,res,next)=>{ 
 //     res.header("Access-Control-Allow-Origin","https://food-comerce.netlify.app")
 //     res.header("Access-Control-Allow-Methods",'GET,PUT,POST,DELETE')
